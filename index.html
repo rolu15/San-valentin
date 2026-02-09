@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Para Ti ❤️</title>
+    <title>Para Carla ❤️</title>
     <style>
         body {
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
@@ -18,10 +18,11 @@
         .card {
             background: white;
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: fadeIn 2s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            animation: fadeIn 1.5s ease;
+            max-width: 400px;
         }
 
         h1 {
@@ -32,22 +33,34 @@
         p {
             font-size: 18px;
             color: #555;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
         }
 
         button {
-            margin-top: 20px;
-            padding: 15px 30px;
+            padding: 12px 25px;
             font-size: 18px;
             border: none;
             border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .yes {
             background: #e60073;
             color: white;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
+        }
+
+        .no {
+            background: #ccc;
+            color: #333;
         }
 
         button:hover {
-            background: #ff3385;
             transform: scale(1.1);
         }
 
@@ -77,20 +90,34 @@
 </head>
 <body>
 
-<div class="card">
-    <h1>💖 Mi Amor 💖</h1>
-    <p>
+<div class="card" id="card">
+    <h1>💖 Carla 💖</h1>
+    <p id="question">
         Desde que llegaste a mi vida,<br>
-        mis días son más felices,<br>
-        mis sonrisas más sinceras<br>
-        y mi corazón tiene dueña ❤️
+        todo es más bonito 💕<br><br>
+        ¿Quieres ser mi San Valentín? 🌹
     </p>
-    <button onclick="pregunta()">¿Quieres ser mi San Valentín? 💌</button>
+
+    <div class="buttons">
+        <button class="yes" onclick="dijoSi()">Sí 💖</button>
+        <button class="no" onclick="dijoNo()">No 🙈</button>
+    </div>
 </div>
 
 <script>
-    function pregunta() {
-        alert("🌹 Prometo abrazarte mucho,\nreír contigo siempre\n y quererte cada día más 💕\n\n¿Aceptas ser mi San Valentín? 😍");
+    function dijoNo() {
+        alert("❌ Opción incorrecta 😌\nInténtalo de nuevo, Carla 💕");
+    }
+
+    function dijoSi() {
+        const card = document.getElementById("card");
+        card.innerHTML = `
+            <h1>💘 ¡Sabía que dirías que sí! 💘</h1>
+            <p>
+                Gracias por hacerme la persona más feliz del mundo 💖<br><br>
+                Feliz San Valentín, Carla 🌹✨
+            </p>
+        `;
     }
 
     // Corazones flotando
@@ -102,9 +129,7 @@
         heart.style.fontSize = (Math.random() * 20 + 15) + "px";
         document.body.appendChild(heart);
 
-        setTimeout(() => {
-            heart.remove();
-        }, 6000);
+        setTimeout(() => heart.remove(), 6000);
     }, 300);
 </script>
 
